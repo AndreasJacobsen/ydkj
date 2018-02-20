@@ -13,8 +13,9 @@ body {
     border-color: #ffffff4d;
     border-width: 0.3px;
     font-size: 12px;
-    margin-right: 323;
+    padding-right: 2em;
 }
 .gul {
     color: yellow;
+    display: inline;
 }

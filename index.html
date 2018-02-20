@@ -16,7 +16,7 @@
 </head>
 <body>
 </body>
-<h1> Intro to JS </h1>
+<h1> Intro to <div class="gul">JS </div></h1>
 <h2>Objects vs Arrays</h2>
 You could, theoretically, use an array as a normal object. But why would you? <br>
 Arrays ARE objects. but using them as "normal" objects makes little sense <br>
@@ -59,9 +59,24 @@ Example of explicit coercion
 <code class="gul">===</code> checks for equality without coercion allowed, so int 42 is equal to int 42, but not equal to string 42
 
 <pre><code class="JavaScript   codebox">
+    //coercion difference between == and ===
     var a = "42" //string
     var b = 42 //number 
     a == b; //true 
     a === b; //false
     </code></pre>
 <p> It could be argued that <code class="gul">===</code> is more predictable than <code class="gul">==</code>, but if you take the time to properly learn coercion <code class="gul">==</code>, can become a powerfull tool and allow you to manipulate and use data in more ways
+<p> The same rules applies for the reverse, <code class="gul">!==</code> and <code class="gul">!===</code> 
+
+Objects (and thus arrays) coerce using their refrence ID instead of their content, so when using equality operators with arrays and object we must remember that two identical objects have different refrence. <br>
+How ever we <b>can</b> compare the content og objects with strings of equal content. 
+<pre><code class="JavaScript   codebox">
+    //comparing objects and strings
+    var a = [1,2,3]; //array 
+    var b = [1,2,3]; //array
+    var c = "1,2,3" //string
+
+    a == c; //true
+    b == c; //true 
+    a == b; //false 
+        </code></pre>
