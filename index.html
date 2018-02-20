@@ -16,7 +16,7 @@
 </head>
 <body>
 </body>
-<h1> Intro to <div class="gul">JS </div></h1>
+<h1 id="intro"> Intro to <div class="gul">JS </div></h1>
 <h2>Objects vs Arrays</h2>
 You could, theoretically, use an array as a normal object. But why would you? <br>
 Arrays ARE objects. but using them as "normal" objects makes little sense <br>
@@ -40,14 +40,14 @@ Example of explicit coercion
     document.write("kebabbiten ble født i "+ year +"&lt;br&gt;") 
     mathYear = Number (year);  //casting string to number
     curYear = date.getFullYear();
-    age = curYear -mathYear ; 
+    age = curYear-mathYear ; 
     document.write("som gjør biten "+ age  +" år gammel i år") 
     </code></pre>
 
     Coercion can be harder to detect at other times, but always follows logical patterns. <br> Learning why suprising coercion happens when it does happen and using the <code class="gul">typeof</code> javascript operator will allow you to detirme what type the variable is at certain stages.
     remember that <code class="gul">typeof</code> can print to console log for debugging and seeing where the value coerces
     <p>Implicit coercion can be harder to detect, see the example bellow shamlessly stolen from the You Don't Know JS books </p>
-    <pre><code class="JavaScript   codebox">
+    <pre><code class="JavaScript codebox">
     var a = "42";
     var b = a * 1;	// "42" implicitly coerced to 42 here
     a;	 // "42"

@@ -13,9 +13,13 @@ body {
     border-color: #ffffff4d;
     border-width: 0.3px;
     font-size: 12px;
-    padding-right: 2em;
+    padding-right: 130px;
 }
 .gul {
     color: yellow;
     display: inline;
+}
+
+#intro {
+    color: hotpink;
 }
