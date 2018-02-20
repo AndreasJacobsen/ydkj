@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Learn JavaScript    </title>
+    <meta charset="UTF-8">
+
+<script type="text/javascript" src="intro.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/qtcreator_dark.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script type="text/javascript" src="highlight.pack.js" charset="UTF-8"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+
+</head>
+<body>
+</body>
+<h1> Intro to JS </h1>
+<h2>Objects vs Arrays</h2>
+You could, theoretically, use an array as a normal object. But why would you? <br>
+Arrays ARE objects. but using them as "normal" objects makes little sense <br>
+Arrays should be used with anything with numerically positioned avlues. <br>
+And objects for values that have named values
+
+
+<h2>Functions</h2>
+Functions are also subtypes of objects, but "typeof" returns "function" instead of "object" 
+which implies that a function is a main type -- and can thus have properties, but you typically will only use function object properties (like foo.bar) in limited cases.
+</html>
+
+<h2>Coercion</h2>
+Coercion is "casting" one data type into another. This can be done explicit, where you usually understand what is happening; or implicit where you often don't know that it happes (untill it is too late!) <br>
+Example of explicit coercion 
+<pre><code class="JavaScript  codebox">
+    var date = new Date(); 
+    var year = "1990"; 
+    biten = "Kebabbiten";
+        
+    document.write("kebabbiten ble født i "+ year +"&lt;br&gt;") 
+    mathYear = Number (year);  //casting string to number
+    curYear = date.getFullYear();
+    age = curYear -mathYear ; 
+    document.write("som gjør biten "+ age  +" år gammel i år") 
+    </code></pre>
+
+    Coercion can be harder to detect at other times, but always follows logical patterns. <br> Learning why suprising coercion happens when it does happen and using the <code class="gul">typeof</code> javascript operator will allow you to detirme what type the variable is at certain stages.
+    remember that <code class="gul">typeof</code> can print to console log for debugging and seeing where the value coerces
+    <p>Implicit coercion can be harder to detect, see the example bellow shamlessly stolen from the You Don't Know JS books </p>
+    <pre><code class="JavaScript   codebox">
+    var a = "42";
+    var b = a * 1;	// "42" implicitly coerced to 42 here
+    a;	 // "42"
+    b;	 // 42 -- the number!
+        </code></pre>
+
+<h2>Equality</h2>
+<code class="gul">==</code> checks for equality with coercion allowed, by coercion we mean that number 42 and string 42 can be equal even though they are different types. <br>
+<code class="gul">===</code> checks for equality without coercion allowed, so int 42 is equal to int 42, but not equal to string 42
+
+<pre><code class="JavaScript   codebox">
+    var a = "42" //string
+    var b = 42 //number 
+    a == b; //true 
+    a === b; //false
+    </code></pre>
+<p> It could be argued that <code class="gul">===</code> is more predictable than <code class="gul">==</code>, but if you take the time to properly learn coercion <code class="gul">==</code>, can become a powerfull tool and allow you to manipulate and use data in more ways
