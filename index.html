@@ -7,6 +7,10 @@
     <script type="text/javascript" src="intro.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/qtcreator_dark.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="highlight.pack.js" charset="UTF-8"></script>
     <script>
         hljs.initHighlightingOnLoad();
@@ -19,16 +23,28 @@
 </head>
 
 <body>
-</body>
+        <nav class="navbar navbar-expand-lg navbar-expand navbar-dark bg-primary">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Up & Going <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">Scope and Closure</a>
+                    <a class="nav-item nav-link" href="#">this & Object Prototypes</a>
+                  </div>
+                </div>
+              </nav><br>
 <h1 id="intro"> Intro to
     <div class="gul">JS </div>
 </h1>
+<hr>
 <h2>Objects vs Arrays</h2>
 You could, theoretically, use an array as a normal object. But why would you?
 <br> Arrays ARE objects. but using them as "normal" objects makes little sense
-<br> Arrays should be used with anything with numerically positioned avlues.
+<br> Arrays should be used with anything with numerically positioned values.
 <br> And objects for values that have named values
-
+<hr>
 
 <h2>Functions</h2>
 Functions are also subtypes of objects, but "typeof" returns "function" instead of "object" which implies that a function
@@ -36,21 +52,21 @@ is a main type -- and can thus have properties, but you typically will only use 
 in limited cases.
 
 </html>
-
+<hr>
 <h2>Coercion</h2>
 Coercion is "casting" one data type into another. This can be done explicit, where you usually understand what is happening;
 or implicit where you often don't know that it happes (untill it is too late!)
 <br> Example of explicit coercion
 <pre><code class="JavaScript  codebox">
-    var date = new Date(); 
-    var year = "1990"; 
+    var date = new Date();
+    var year = "1990";
     biten = "Kebabbiten";
-        
-    document.write("kebabbiten ble født i "+ year +"&lt;br&gt;") 
+
+    document.write("kebabbiten ble født i "+ year +"&lt;br&gt;")
     mathYear = Number (year);  //casting string to number
     curYear = date.getFullYear();
-    age = curYear-mathYear ; 
-    document.write("som gjør biten "+ age  +" år gammel i år") 
+    age = curYear-mathYear ;
+    document.write("som gjør biten "+ age  +" år gammel i år")
     </code></pre> Coercion can be harder to detect at other times, but always follows logical patterns.
 <br> Learning why suprising coercion happens when it does happen and using the
 <code class="gul">typeof</code> javascript operator will allow you to detirme what type the variable is at certain stages. remember that
@@ -64,7 +80,7 @@ or implicit where you often don't know that it happes (untill it is too late!)
     a;	 // "42"
     b;	 // 42 -- the number!
     </code></pre>
-
+<hr>
     <h2>Equality</h2>
     <code class="gul">==</code> checks for equality with coercion allowed, by coercion we mean that number 42 and string 42 can be equal even
     though they are different types.
@@ -74,8 +90,8 @@ or implicit where you often don't know that it happes (untill it is too late!)
     <pre><code class="JavaScript   codebox">
     //coercion difference between == and ===
     var a = "42" //string
-    var b = 42 //number 
-    a == b; //true 
+    var b = 42 //number
+    a == b; //true
     a === b; //false
     </code></pre>
     <p> It could be argued that
@@ -92,11 +108,86 @@ or implicit where you often don't know that it happes (untill it is too late!)
             <b>can</b> compare the content og objects with strings of equal content.
             <pre><code class="JavaScript   codebox">
     //comparing objects and strings
-    var a = [1,2,3]; //array 
+    var a = [1,2,3]; //array
     var b = [1,2,3]; //array
     var c = "1,2,3" //string
 
     a == c; //true
-    b == c; //true 
-    a == b; //false 
+    b == c; //true
+    a == b; //false
         </code></pre>
+<hr>
+        <h2>Closure</h2>
+Closure is a way for JS to "remember" and continue accessing a functions scope (it's variables) even after the function has completed running. Consider the following example
+
+<pre><code class="JavaScript   codebox">
+function makeAdder(x) {
+    // paramater x is an inner variable
+
+    //inner function add() uses x so it has a colsure over it
+    function add(y) {
+        return y+x;
+    };
+    return add
+}
+    </code></pre>
+Let us use this function
+
+<pre><code class="JavaScript   codebox">
+    var plusOne = makeAdder(1);
+    var plusTen = makeAdder(10);
+    console.log("Return from makeAdder(1) is: " + plusOne(1)); // returns 1
+    // makeAdder remembers it's X value set in plusEn or plusTi
+    // If we give these variables another function input this is passed to add(y) instead of makeAdder
+    console.log(plusOne(10)); // returns 11
+    console.log(plusTen(5)); // returns 15
+            </code></pre>
+
+Notice how we declare the <code>var plusOne </code> to point to the <code>makeAdder</code> function with a paramter. <br>
+Then we <code>console.log(plusOne(10))</code> which returns 11 instead of 10. Here JS remembered the original makeAdder value and passed the second paramter to the function <code>function add(y)</code> instead of <code>function makeAdder(x)</code>
+
+<br><br>
+<h3>Modules</h3>
+
+Modules is one of the most common closure patterns in JS. Modules lets you declare private details such as variables and functions that are hidden from the outside world, you can also create a public API that is accesibile from the outisde world.
+
+Consider the following module:
+
+<pre><code class="JavaScript   codebox">
+        function User() {
+            var username, passwords;
+
+            function doLogin(user, pw) {
+              username = user;
+              passwords = pw;
+
+              // do the rest of the login here..
+              console.log(
+                "you are now logged inn with username: " +
+                  username +
+                  " and password: " +
+                  passwords
+              );
+            }
+            // The modules public API
+            var publicAPI = {
+              login: doLogin
+            };
+            return publicAPI;
+          }
+</code></pre>
+
+Since we have declared a publicAPI in this module (function) we only need to call the public API to be able to use the function.
+Example:
+
+<pre><code class="JavaScript  codebox">
+        var andreas = User();
+        // Calls the public API of the User module, this api runs doLogin.
+        andreas.login("Andreas", "trygtPassord");
+</code></pre>
+<br>
+The  <code>User()</code> function holds the variables username and password, the inner function <code>doLogin()</code> is returned so it is the only function we can call outside of <code>User()</code>. The rest of <code>User()</code> is private and only accesible within the function
+
+We are simply calling <code>User()</code> instead of writing <code>new User()</code> because <code>User()</code> is just a function, not a class. While we could do <code>new User()</code> this would be reduntant. <br>By setting <code>var andreas = User();</code> we create a new instanse of <code>User()</code> and copy all it's content to the new instanse. So each user would contain one version of this function
+
+</body>

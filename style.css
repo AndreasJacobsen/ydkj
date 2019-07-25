@@ -1,25 +1,30 @@
 body {
-    background-color: black !important;
-    color: grey !important;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.2;
-    padding-right: 3em;
+  background-color: black !important;
+  color: grey !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  padding-right: 3em;
+  margin-left: 1em;
 }
 
 .codebox {
-    display: inline-block;
-    border-style: solid;
-    border-color: #ffffff4d;
-    border-width: 0.3px;
-    font-size: 12px;
-    padding-right: 130px;
+  display: inline-block;
+  border-style: solid;
+  border-color: #ffffff4d;
+  border-width: 0.3px;
+  font-size: 12px;
+  padding-right: 130px;
 }
 .gul {
-    color: yellow;
-    display: inline;
+  color: yellow;
+  display: inline;
 }
 
 #intro {
-    color: hotpink;
+  color: hotpink;
+}
+hr {
+  background-color: hotpink;
+  height: 0.2em;
 }
